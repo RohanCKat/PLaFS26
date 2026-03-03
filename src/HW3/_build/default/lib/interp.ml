@@ -50,6 +50,10 @@ let rec eval_expr : expr -> exp_val ea_result =
     eval_expr e >>=
     int_of_numVal >>= fun n ->
     return (BoolVal (n = 0))
+  | Debug(_e) ->
+    string_of_env >>= fun str ->
+    print_endline str; 
+    error "Debug called"
   | Cons(e1,e2) ->
     eval_expr e1 >>= fun n ->
     eval_expr e2 >>= 
@@ -61,14 +65,12 @@ let rec eval_expr : expr -> exp_val ea_result =
     if n = [] 
     then error "List is empty!"
     else return ((List.hd n))
-
   | Tl(e) ->
     eval_expr e >>= 
     list_of_listVal >>= fun n ->
     if n = [] 
     then error "List is empty!"
     else return (ListVal (List.tl n))
-
   | IsEmpty(e) ->
     eval_expr e >>= 
     list_of_listVal >>= fun n ->
@@ -80,7 +82,7 @@ let rec eval_expr : expr -> exp_val ea_result =
     return (TupleVal l)
   | Untuple(ids,e1,e2) -> 
     eval_expr e1 >>=
-    tuple_of_tupelVal >>= fun vals ->
+    list_of_tupleVal >>= fun vals ->
     extend_env_list ids vals >>+
     eval_expr e2
   | _ -> failwith "Not implemented yet!"

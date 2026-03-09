@@ -13,29 +13,28 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_a7b2d3_output
-# Promoting "_build/default/parser_plaf.opam" to "parser_plaf.opam"
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_2f11dd_output
 $ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -53 -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.parser_plaf.objs/byte -no-alias-deps -opaque -o lib/.parser_plaf.objs/byte/parser_plaf.cmo -c -impl lib/parser_plaf.ml-gen)
-$ (cd _build/default && /home/ubuntu/.opam/default/bin/menhir lib/grammar.mly --base lib/grammar --infer-write-query lib/grammar__mock.ml.mock)
 $ (cd _build/default/lib && /home/ubuntu/.opam/default/bin/menhir grammar.mly --only-preprocess-u) > _build/default/lib/unitActionsGrammar.mly
+$ (cd _build/default && /home/ubuntu/.opam/default/bin/menhir lib/grammar.mly --base lib/grammar --infer-write-query lib/grammar__mock.ml.mock)
 $ (cd _build/default && /home/ubuntu/.opam/default/bin/menhir --table --external-tokens Grammar lib/unitActionsGrammar.mly --base lib/unitActionsGrammar --infer-write-query lib/unitActionsGrammar__mock.ml.mock)
 $ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -53 -w -49 -nopervasives -nostdlib -g -I lib/.parser_plaf.objs/byte -I lib/.parser_plaf.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o lib/.parser_plaf.objs/native/parser_plaf.cmx -c -impl lib/parser_plaf.ml-gen)
-$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.parser_plaf.objs/parser_plaf__Parser.impl.d
 $ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/ast.ml) > _build/default/lib/.parser_plaf.objs/parser_plaf__Ast.impl.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/parser.ml) > _build/default/lib/.parser_plaf.objs/parser_plaf__Parser.impl.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.parser_plaf.eobjs/byte -no-alias-deps -opaque -o test/.parser_plaf.eobjs/byte/dune__exe__Parser_plaf.cmi -c -intf test/parser_plaf.mli)
 $ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/grammar__mock.ml.mock) > _build/default/lib/.parser_plaf.objs/grammar__mock.impl.d
 $ (cd _build/default && /usr/bin/ocamllex -q -o lib/lexer.ml lib/lexer.mll)
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.parser_plaf.eobjs/byte -no-alias-deps -opaque -o test/.parser_plaf.eobjs/byte/dune__exe__Parser_plaf.cmi -c -intf test/parser_plaf.mli)
-$ (cd _build/default/lib && /home/ubuntu/.opam/default/bin/menhir grammar.mly --list-errors) > _build/default/lib/parserMessages.auto.messages
 $ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/unitActionsGrammar__mock.ml.mock) > _build/default/lib/.parser_plaf.objs/unitActionsGrammar__mock.impl.d
-$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.parser_plaf.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -no-alias-deps -opaque -open Parser_plaf -o lib/.parser_plaf.objs/byte/parser_plaf__Ast.cmo -c -impl lib/ast.ml)
 $ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.parser_plaf.eobjs/byte -I test/.parser_plaf.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.parser_plaf.eobjs/native/dune__exe__Parser_plaf.cmx -c -impl test/parser_plaf.ml)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.parser_plaf.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -no-alias-deps -opaque -open Parser_plaf -o lib/.parser_plaf.objs/byte/parser_plaf__Ast.cmo -c -impl lib/ast.ml)
+$ (cd _build/default/lib && /home/ubuntu/.opam/default/bin/menhir grammar.mly --list-errors) > _build/default/lib/parserMessages.auto.messages
 $ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/lexer.ml) > _build/default/lib/.parser_plaf.objs/parser_plaf__Lexer.impl.d
 $ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I lib/.parser_plaf.objs/byte -I lib/.parser_plaf.objs/native -I /home/ubuntu/.opam/default/lib/menhirLib -intf-suffix .ml -no-alias-deps -opaque -open Parser_plaf -o lib/.parser_plaf.objs/native/parser_plaf__Ast.cmx -c -impl lib/ast.ml)
+$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/parser_plaf.exe test/.parser_plaf.eobjs/native/dune__exe__Parser_plaf.cmx)
 $ (cd _build/default/lib && /home/ubuntu/.opam/default/bin/menhir grammar.mly --compare-errors parserMessages.auto.messages --compare-errors parserMessages.messages) > _build/default/lib/parserMessages.check
 > Read 413 sample input sentences and 413 error messages.
 > Read 413 sample input sentences and 413 error messages.
 $ (cd _build/.sandbox/1872f27371aea8258dd3e1b34b024e3a/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -I lib/.parser_plaf.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -open Parser_plaf -short-paths -i -impl lib/grammar__mock.ml.mock) > _build/.sandbox/1872f27371aea8258dd3e1b34b024e3a/default/lib/grammar__mock.mli.inferred
-$ (cd _build/default && /usr/bin/ocamlopt.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -o test/parser_plaf.exe test/.parser_plaf.eobjs/native/dune__exe__Parser_plaf.cmx)
 $ (cd _build/default/lib && /home/ubuntu/.opam/default/bin/menhir grammar.mly --compile-errors parserMessages.messages) > _build/default/lib/parserMessages.ml
 > Read 413 sample input sentences and 413 error messages.
 $ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/parserMessages.ml) > _build/default/lib/.parser_plaf.objs/parser_plaf__ParserMessages.impl.d

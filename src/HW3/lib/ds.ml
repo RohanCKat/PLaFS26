@@ -119,6 +119,7 @@ let rec string_of_expval = function
   | PairVal (ev1,ev2) -> "PairVal("^string_of_expval ev1
                          ^","^ string_of_expval ev2^")"
   | TupleVal evs -> "TupleVal("^String.concat "," (List.map string_of_expval evs)^")"
+  | ListVal lis -> "ListVal("^String.concat "," (List.map string_of_expval lis)^")"
 
 let rec string_of_env' ac = function
   | EmptyEnv ->  "["^String.concat ",\n" ac^"]"

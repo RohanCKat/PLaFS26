@@ -2,6 +2,8 @@ open Ds
 open Parser_plaf.Ast
 open Parser_plaf.Parser
     
+(*Name: Rohan Kathiari
+Pledge: I Pledge My Honor That I have abided By The Stevens Honor System*)
 let g_store = Store.empty_store 20 (NumVal 0)
 
 let rec addIds fs evs =

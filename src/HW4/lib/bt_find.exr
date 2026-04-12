@@ -1,0 +1,30 @@
+
+(* Find exercise  *)
+
+let n_left = { data <= 12; left <= 0; right <= 0}    (* 0 in head signals null *)
+in let n_right = { data <= 44; left <= 0; right <= 0}
+in let n_root = { data <= 33; left <= n_left ; right <= n_right }
+in let t1 = { root <= n_root ; length <= 3} 
+in let or = proc (x) {proc (y) {if x then x else (if y then x else y)}}
+in let false = (1 = 0)
+in let true = (1 = 1)
+in let find_bt = proc (t) {
+letrec f(x) = proc (y) {
+if number?(x) then false else
+(if x.data = y
+then true
+else 
+((or
+(
+if number?(x.left)
+then false
+else ((f x.left) y)
+))
+(
+if number?(x.right)
+then false
+else ((f x.right) y)
+)))
+} in (f t.root)
+}
+in ((find_bt t1) 12)

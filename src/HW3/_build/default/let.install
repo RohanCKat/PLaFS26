@@ -1,0 +1,23 @@
+lib: [
+  "_build/install/default/lib/let/META"
+  "_build/install/default/lib/let/ds.ml"
+  "_build/install/default/lib/let/dune-package"
+  "_build/install/default/lib/let/interp.ml"
+  "_build/install/default/lib/let/let.a"
+  "_build/install/default/lib/let/let.cma"
+  "_build/install/default/lib/let/let.cmi"
+  "_build/install/default/lib/let/let.cmt"
+  "_build/install/default/lib/let/let.cmx"
+  "_build/install/default/lib/let/let.cmxa"
+  "_build/install/default/lib/let/let.ml"
+  "_build/install/default/lib/let/let__Ds.cmi"
+  "_build/install/default/lib/let/let__Ds.cmt"
+  "_build/install/default/lib/let/let__Ds.cmx"
+  "_build/install/default/lib/let/let__Interp.cmi"
+  "_build/install/default/lib/let/let__Interp.cmt"
+  "_build/install/default/lib/let/let__Interp.cmx"
+  "_build/install/default/lib/let/opam"
+]
+libexec: [
+  "_build/install/default/lib/let/let.cmxs"
+]

@@ -1,0 +1,18 @@
+
+
+
+(library
+ (name infer)        ; name of the opam library
+ (libraries parser_plaf)
+ (public_name infer) ; required for generating documentation
+ (synopsis "Type inference for CHECKED")
+ ;; (wrapped      false) ; true by default
+ )
+
+; the next line avoids warnings from stopping the build
+
+(env
+ (dev
+  (flags
+   (:standard -warn-error -A))))
+

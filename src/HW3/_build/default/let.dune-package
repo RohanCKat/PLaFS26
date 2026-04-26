@@ -1,0 +1,53 @@
+(lang dune 3.21)
+(name let)
+(sections (lib .) (libexec .))
+(files
+ (lib
+  (META
+   ds.ml
+   dune-package
+   interp.ml
+   let.a
+   let.cma
+   let.cmi
+   let.cmt
+   let.cmx
+   let.cmxa
+   let.ml
+   let__Ds.cmi
+   let__Ds.cmt
+   let__Ds.cmx
+   let__Interp.cmi
+   let__Interp.cmt
+   let__Interp.cmx
+   opam))
+ (libexec (let.cmxs)))
+(library
+ (name let)
+ (kind normal)
+ (synopsis "Interpreter for LET")
+ (archives (byte let.cma) (native let.cmxa))
+ (plugins (byte let.cma) (native let.cmxs))
+ (native_archives let.a)
+ (requires parser_plaf)
+ (main_module_name Let)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name let)
+     (visibility public)
+     (kind alias)
+     (source (path Let) (impl (path let.ml-gen))))
+    (name Let)
+    (modules
+     (module
+      (obj_name let__Ds)
+      (visibility public)
+      (source (path Ds) (impl (path ds.ml))))
+     (module
+      (obj_name let__Interp)
+      (visibility public)
+      (source (path Interp) (impl (path interp.ml))))))
+   (wrapped true))))

@@ -1,0 +1,6 @@
+description = "Interpreter for LET"
+requires = "parser_plaf"
+archive(byte) = "let.cma"
+archive(native) = "let.cmxa"
+plugin(byte) = "let.cma"
+plugin(native) = "let.cmxs"

@@ -1,0 +1,46 @@
+# dune ut
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /home/ubuntu/.cache/dune/db
+# Workspace root: /home/ubuntu/PlaF/PLaFS26/src/HW5Infer/infer/infer
+# Auto-detected concurrency: 16
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; instrument_with = []
+#  }
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_198636_output
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -53 -w -49 -nopervasives -nostdlib -g -bin-annot -I lib/.infer.objs/byte -no-alias-deps -opaque -o lib/.infer.objs/byte/infer.cmo -c -impl lib/infer.ml-gen)
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/inferrer.ml) > _build/default/lib/.infer.objs/infer__Inferrer.impl.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/reM.ml) > _build/default/lib/.infer.objs/infer__ReM.impl.d
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/unif.ml) > _build/default/lib/.infer.objs/infer__Unif.impl.d
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.infer.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -I /home/ubuntu/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Infer -o lib/.infer.objs/byte/infer__ReM.cmo -c -impl lib/reM.ml)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.infer.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -I /home/ubuntu/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Infer -o lib/.infer.objs/byte/infer__Unif.cmo -c -impl lib/unif.ml)
+> File "lib/unif.ml", line 138, characters 8-40:
+> 138 | let rec occurs : string -> texpr -> bool =
+>               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Warning 39 [unused-rec-flag]: unused rec flag.
+> File "lib/unif.ml", line 143, characters 8-69:
+> 143 | let rec unify_ : EqSet.t -> texpr SubsMap.t -> texpr SubsMap.t result =
+>               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Warning 39 [unused-rec-flag]: unused rec flag.
+> File "lib/unif.ml", line 139, characters 6-8:
+> 139 |   fun id ty ->
+>             ^^
+> Warning 27 [unused-var-strict]: unused variable id.
+> File "lib/unif.ml", line 144, characters 6-9:
+> 144 |   fun eqs ->
+>             ^^^
+> Warning 27 [unused-var-strict]: unused variable eqs.
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.infer.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -I /home/ubuntu/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Infer -o lib/.infer.objs/byte/infer__Inferrer.cmo -c -impl lib/inferrer.ml)
+> File "lib/inferrer.ml", line 23, characters 8-59:
+> 23 | let rec infer_expr : expr -> (texpr SubsMap.t*texpr) result =
+>              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Warning 39 [unused-rec-flag]: unused rec flag.
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o lib/infer.cma lib/.infer.objs/byte/infer.cmo lib/.infer.objs/byte/infer__ReM.cmo lib/.infer.objs/byte/infer__Unif.cmo lib/.infer.objs/byte/infer__Inferrer.cmo)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -bin-annot -I lib/.utop/.utop.eobjs/byte -I /home/ubuntu/.opam/default/lib/bytes -I /home/ubuntu/.opam/default/lib/findlib -I /home/ubuntu/.opam/default/lib/lambda-term -I /home/ubuntu/.opam/default/lib/logs -I /home/ubuntu/.opam/default/lib/logs/lwt -I /home/ubuntu/.opam/default/lib/lwt -I /home/ubuntu/.opam/default/lib/lwt/unix -I /home/ubuntu/.opam/default/lib/lwt_react -I /home/ubuntu/.opam/default/lib/menhirLib -I /home/ubuntu/.opam/default/lib/mew -I /home/ubuntu/.opam/default/lib/mew_vi -I /home/ubuntu/.opam/default/lib/ocplib-endian -I /home/ubuntu/.opam/default/lib/ocplib-endian/bigstring -I /home/ubuntu/.opam/default/lib/parser_plaf -I /home/ubuntu/.opam/default/lib/react -I /home/ubuntu/.opam/default/lib/result -I /home/ubuntu/.opam/default/lib/trie -I /home/ubuntu/.opam/default/lib/uchar -I /home/ubuntu/.opam/default/lib/utop -I /home/ubuntu/.opam/default/lib/uucp -I /home/ubuntu/.opam/default/lib/uuseg -I /home/ubuntu/.opam/default/lib/uutf -I /home/ubuntu/.opam/default/lib/xdg -I /home/ubuntu/.opam/default/lib/zed -I /usr/lib/ocaml/compiler-libs -I /usr/lib/ocaml/threads -I lib/.infer.objs/byte -no-alias-deps -o lib/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -c -impl lib/.utop/utop.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -o lib/.utop/utop.bc /usr/lib/ocaml/compiler-libs/ocamlcommon.cma /usr/lib/ocaml/compiler-libs/ocamlbytecomp.cma /usr/lib/ocaml/compiler-libs/ocamltoplevel.cma /home/ubuntu/.opam/default/lib/findlib/findlib.cma /home/ubuntu/.opam/default/lib/findlib/findlib_top.cma /home/ubuntu/.opam/default/lib/logs/logs.cma /home/ubuntu/.opam/default/lib/lwt/lwt.cma /home/ubuntu/.opam/default/lib/logs/lwt/logs_lwt.cma /usr/lib/ocaml/unix.cma /usr/lib/ocaml/bigarray.cma /home/ubuntu/.opam/default/lib/ocplib-endian/ocplib_endian.cma /home/ubuntu/.opam/default/lib/ocplib-endian/bigstring/ocplib_endian_bigstring.cma /usr/lib/ocaml/threads/threads.cma /home/ubuntu/.opam/default/lib/lwt/unix/lwt_unix.cma -I /home/ubuntu/.opam/default/lib/lwt/../stublibs /home/ubuntu/.opam/default/lib/react/react.cma /home/ubuntu/.opam/default/lib/lwt_react/lwt_react.cma /home/ubuntu/.opam/default/lib/result/result.cma /home/ubuntu/.opam/default/lib/uutf/uutf.cma /home/ubuntu/.opam/default/lib/uucp/uucp.cma /home/ubuntu/.opam/default/lib/uuseg/uuseg.cma /home/ubuntu/.opam/default/lib/zed/zed.cma /home/ubuntu/.opam/default/lib/trie/trie.cma /home/ubuntu/.opam/default/lib/mew/mew.cma /home/ubuntu/.opam/default/lib/mew_vi/mew_vi.cma /home/ubuntu/.opam/default/lib/lambda-term/lambda_term.cma -I /home/ubuntu/.opam/default/lib/lambda-term/../stublibs /home/ubuntu/.opam/default/lib/xdg/xdg.cma -I /home/ubuntu/.opam/default/lib/xdg/../stublibs /home/ubuntu/.opam/default/lib/utop/uTop.cma /home/ubuntu/.opam/default/lib/menhirLib/menhirLib.cma /home/ubuntu/.opam/default/lib/parser_plaf/parser_plaf.cma lib/infer.cma lib/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -linkall -warn-error -31)

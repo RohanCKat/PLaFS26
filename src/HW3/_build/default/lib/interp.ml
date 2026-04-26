@@ -1,7 +1,10 @@
 open Parser_plaf.Ast
 open Parser_plaf.Parser
 open Ds
-    
+
+(*Name: Rohan Kathiari*)
+(*I Pledge My Honor That I Have Abided By The Stevens Honor System*)
+
 (** [eval_expr e] evaluates expression [e] *)
 let rec eval_expr : expr -> exp_val ea_result =
   fun e ->

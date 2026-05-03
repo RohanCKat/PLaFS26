@@ -52,22 +52,15 @@ let rec chk_expr : expr -> texpr tea_result = function
      else error
          "LetRec: Type of recursive function does not match
 declaration")
-<<<<<<< HEAD
-  (* | Pair(e1, e2) ->
+  | Pair(e1, e2) ->
     chk_expr e1 >>= fun a ->
     chk_expr e2 >>= fun b ->
     return (PairType(a,b))
   | Unpair(id1, id2, e1, e2) ->
     chk_expr e1 >>= fun pair ->
-    match pair with
+    (match pair with
     | PairType(a,b) -> extend_tenv id1 a >>+ extend_tenv id2 b >>+ chk_expr e2
-    | _ -> error "e1 not a pair" *)
-=======
-  | Tuple(es) ->
-    failwith "implement me"
-  | Untuple(ids,e1,e2) ->
-    failwith "implement me"      
->>>>>>> 62b001f239cbd89401a0860a6a33573ef0d2123a
+    | _ -> error "e1 not a pair") 
   | Debug(_e) ->
     string_of_tenv >>= fun str ->
     print_endline str;

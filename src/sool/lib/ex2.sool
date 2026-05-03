@@ -1,6 +1,6 @@
 (* Example 2 *)
 
-class counter extends object {
+class counterc extends object {
   field c
   method initialize() { c:=7 }
   method add(i) { c:=c+i }
@@ -8,11 +8,11 @@ class counter extends object {
   method read() { c }
 }
 
-class resetc extends counter {
+class resetc extends counterc {
   method reset() { c:=0}
 }
 
-class bkpc extends resetc {
+class bkpcc extends resetc {
   field b
   method initialize() {
   begin
@@ -28,7 +28,7 @@ class bkpc extends resetc {
   method restore() { c:=b}
  }
 
-let o = new bkpc()
+let o = new bkpcc()
 in o
 
 (* begin

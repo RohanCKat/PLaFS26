@@ -64,13 +64,29 @@ and
     eval_expr e
   | Letrec([(id,par,_,_,e1)],e2) ->
     extend_env_rec id par e1 >>+
-    eval_expr e2 
+    eval_expr e2
+  | Avg([]) ->
+    error "avg: no arguments"
+  | Avg(es) ->
+    eval_exprs es >>=
+    int_of_numVal_list >>= fun l ->
+    return (NumVal ( (List.fold_left (+) 0 l) / List.length l))
   | Debug(_e) ->
     string_of_env >>= fun str ->
     print_endline str; 
     error "Debug called"
   | _ -> failwith ("Not implemented yet!"^string_of_expr e)
+and
+  eval_exprs es =
+  match es with
+  | [] -> return []
+  | h::t ->
+    eval_expr h >>= fun ev ->
+    eval_exprs t >>= fun evs ->
+    return (ev::evs)
 
+
+      
 let eval_prog (AProg(_,e)) =
   eval_expr e    
 

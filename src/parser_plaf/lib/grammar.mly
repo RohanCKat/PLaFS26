@@ -356,6 +356,8 @@ texpr:
 | "htbl";  LPAREN; t1 = texpr; COMMA; t2 = texpr; RPAREN { HtblType(t1,t2) }
 | LBRACE; ts = separated_list(SEMICOLON, fieldtype);
   RBRACE { RecordType(ts) }
+| LANGLE; ts = separated_list(COMMA, texpr);
+  RANGLE { TupleType(ts) }
 | FROM; id = ID; TAKE; tid = ID { QualType(id,tid) }
 
      

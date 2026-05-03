@@ -283,7 +283,7 @@ and
 (** [interp s] evaluates program [s] *)
 let interp (s: string) : exp_val result = 
   let c = s |> parse |> eval_prog in
-  run c
+  c EmptyEnv
 
 (** [interpf file_name] evaluates program in file [file_name] *)
 let interpf (file_name: string) : exp_val result = 

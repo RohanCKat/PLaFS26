@@ -127,7 +127,8 @@ and
   | UnitType
   | FuncType of texpr*texpr
   | RefType of texpr
-  | ListType of texpr
+  | TupleType of texpr list
+  | ListType of texpr      
   | TreeType of texpr
   | StackType of texpr
   | SetType of texpr
@@ -231,6 +232,7 @@ and
   | IntType -> "int"
   | BoolType -> "bool"
   | UnitType -> "unit"
+  | TupleType(ts) -> "<"^ String.concat "," (List.map string_of_texpr ts)^">"
   | FuncType(t1,t2) -> "("^string_of_texpr t1^" -> "^string_of_texpr t2^")"
   | RefType(t) -> "Ref("^string_of_texpr t^")"
   | ListType(t) -> "List("^string_of_texpr t^")"

@@ -89,6 +89,14 @@ let int_of_numVal : exp_val -> int ea_result =  function
   |  NumVal n -> return n
   | _ -> error "Expected a number!"
 
+let rec int_of_numVal_list evs =
+  match evs with
+  | [] -> return  []
+  | h::t ->
+    int_of_numVal h >>= fun  i ->
+    int_of_numVal_list t >>= fun is ->
+    return (i::is)
+      
 let bool_of_boolVal : exp_val -> bool ea_result =  function
   |  BoolVal b -> return b
   | _ -> error "Expected a boolean!"

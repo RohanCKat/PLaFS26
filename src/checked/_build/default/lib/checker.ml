@@ -58,9 +58,13 @@ declaration")
     return (PairType(a,b))
   | Unpair(id1, id2, e1, e2) ->
     chk_expr e1 >>= fun pair ->
-    match pair with
-    | Pair(a,b) -> extend_tenv id1 a >>+ extend_tenv id2 b >>+ chk_expr e2
-    | _ -> error "e1 not a pair"
+    (match pair with
+    | PairType(a,b) -> extend_tenv id1 a >>+ extend_tenv id2 b >>+ chk_expr e2
+    | _ -> error "e1 not a pair")
+  | Tuple(es) ->
+    failwith "implement me"
+  | Untuple(ids,e1,e2) ->
+    failwith "implement me"      
   | Debug(_e) ->
     string_of_tenv >>= fun str ->
     print_endline str;

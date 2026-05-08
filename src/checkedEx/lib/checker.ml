@@ -61,6 +61,69 @@ declaration")
     (match pair with
     | PairType(a,b) -> extend_tenv id1 a >>+ extend_tenv id2 b >>+ chk_expr e2
     | _ -> error "e1 not a pair") 
+  | NewRef(e) ->
+    chk_expr e >>= fun a -> return @@ (RefType a)
+  | DeRef(e) ->
+    chk_expr e >>= fun a ->
+    (match a with
+    | RefType x -> return @@ x
+    | _ -> error "Not a RefType")
+  | SetRef(e1, e2) ->
+    chk_expr e1 >>= fun r ->
+    chk_expr e2 >>= fun n ->
+    (match r with
+    | RefType x -> if x=n then return @@ UnitType else error "not the same type"
+    | _ -> error "Not a RefType")
+  | BeginEnd([]) -> return @@ UnitType
+  | BeginEnd(es) ->
+    chk_expr (List.hd (List.rev es)) >>= fun a -> return @@ a
+  | EmptyList(Some t) ->
+    return @@ (ListType t)
+  | EmptyList(None) ->
+    error "No type specified"
+  | Cons(e1, e2) ->
+    chk_expr e1 >>= fun a ->
+    chk_expr e2 >>= fun b ->
+    (match b with
+    | ListType t -> if t=a then return @@ (ListType a) else error "first and second elements dont have the same type"
+    | _ -> error "Not a list")
+  | Hd(e) ->
+    chk_expr e >>= fun a ->
+    (match a with
+    | ListType t -> return @@ t
+    | _ -> error "Not a list")
+  | Tl(e) ->
+    chk_expr e >>= fun a ->
+    (match a with
+    | ListType t -> return @@ (ListType t)
+    | _ -> error "Not a list")
+  | IsEmpty(e) -> 
+    chk_expr e >>= fun a ->
+    (match a with
+    | ListType _ -> return @@ (BoolType)
+    | TreeType _ -> return @@ (BoolType)
+    | _ -> error "Not a list")
+  | EmptyTree(Some t) ->
+    return @@ (TreeType t)
+  | EmptyTree(None) ->
+    error "No type specified"
+  | Node (e1, e2, e3) ->
+    chk_expr e1 >>= fun a ->
+    chk_expr e2 >>= fun b ->
+    chk_expr e3 >>= fun c ->
+    (match (b, c) with
+    | (TreeType t, TreeType s) -> if t=s && t=a then return @@ (TreeType t) else error "Not same tree type"
+    | _ -> error "Not a tree type")
+  | CaseT(target, emptycase, id1, id2, id3, nodecase) ->
+    chk_expr target >>= fun a ->
+    (match a with
+    | TreeType t -> chk_expr emptycase >>= fun b ->
+      extend_tenv id1 t >>+
+      extend_tenv id2 (TreeType t) >>+
+      extend_tenv id3 (TreeType t) >>+
+      chk_expr nodecase >>= fun c ->
+      if b=c then return @@ c else error "return types dont match"
+    | _ -> error "Not a tree type")
   | Debug(_e) ->
     string_of_tenv >>= fun str ->
     print_endline str;

@@ -1,0 +1,39 @@
+(* Example 2 *)
+
+class counterc extends object {
+  field c
+  method initialize() { c:=7 }
+  method add(i) { c:=c+i }
+  method bump() { send self add(1) }
+  method read() { c }
+}
+
+class resetc extends counterc {
+  method reset() { c:=0}
+}
+
+class bkpcc extends resetc {
+  field b
+  method initialize() {
+  begin
+    super initialize();
+    b:=12
+    end }
+  method add(i) {
+      begin
+	send self backup();
+	super add(i)
+      end }
+  method backup() { b:=c }
+  method restore() { c:=b}
+ }
+
+let o = new bkpcc()
+in o
+
+(* begin
+     send o add(10); 
+     send o bump();
+     send o restore();
+     send o read()
+   end *)

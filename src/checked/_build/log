@@ -3,7 +3,7 @@
 # Shared cache: enabled-except-user-rules
 # Shared cache location: /home/ubuntu/.cache/dune/db
 # Workspace root: /home/ubuntu/PlaF/PLaFS26/src/checked
-# Auto-detected concurrency: 14
+# Auto-detected concurrency: 16
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -13,11 +13,25 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /usr/bin/ocamlc.opt -config > /tmp/dune_e0e78c_output
+$ /usr/bin/ocamlc.opt -config > /tmp/dune_0eb3c0_output
+$ (cd _build/default && /usr/bin/ocamldep.opt -modules -impl lib/checker.ml) > _build/default/lib/.checked.objs/checked__Checker.impl.d
 $ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -bin-annot -I lib/.checked.objs/byte -I /home/ubuntu/.opam/default/lib/menhirLib -I /home/ubuntu/.opam/default/lib/parser_plaf -no-alias-deps -opaque -open Checked -o lib/.checked.objs/byte/checked__Checker.cmo -c -impl lib/checker.ml)
-> File "lib/checker.ml", line 62, characters 6-10:
-> 62 |     | Pair(a,b) -> extend_tenv id1 a >>+ extend_tenv id2 b >>+ chk_expr e2
->            ^^^^
-> Error: This variant pattern is expected to have type texpr
->        There is no constructor Pair within type texpr
-[2]
+> File "lib/checker.ml", line 64, characters 9-13:
+> 64 |   | Tuple(es) ->
+>               ^^^^
+> Warning 27 [unused-var-strict]: unused variable es.
+> File "lib/checker.ml", line 66, characters 12-15:
+> 66 |   | Untuple(ids,e1,e2) ->
+>                  ^^^
+> Warning 27 [unused-var-strict]: unused variable ids.
+> File "lib/checker.ml", line 66, characters 16-18:
+> 66 |   | Untuple(ids,e1,e2) ->
+>                      ^^
+> Warning 27 [unused-var-strict]: unused variable e1.
+> File "lib/checker.ml", line 66, characters 19-21:
+> 66 |   | Untuple(ids,e1,e2) ->
+>                         ^^
+> Warning 27 [unused-var-strict]: unused variable e2.
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A -g -a -o lib/checked.cma lib/.checked.objs/byte/checked.cmo lib/.checked.objs/byte/checked__ReM.cmo lib/.checked.objs/byte/checked__Store.cmo lib/.checked.objs/byte/checked__Ds.cmo lib/.checked.objs/byte/checked__Interp.cmo lib/.checked.objs/byte/checked__Dst.cmo lib/.checked.objs/byte/checked__Checker.cmo)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -bin-annot -I lib/.utop/.utop.eobjs/byte -I /home/ubuntu/.opam/default/lib/bytes -I /home/ubuntu/.opam/default/lib/findlib -I /home/ubuntu/.opam/default/lib/lambda-term -I /home/ubuntu/.opam/default/lib/logs -I /home/ubuntu/.opam/default/lib/logs/lwt -I /home/ubuntu/.opam/default/lib/lwt -I /home/ubuntu/.opam/default/lib/lwt/unix -I /home/ubuntu/.opam/default/lib/lwt_react -I /home/ubuntu/.opam/default/lib/menhirLib -I /home/ubuntu/.opam/default/lib/mew -I /home/ubuntu/.opam/default/lib/mew_vi -I /home/ubuntu/.opam/default/lib/ocplib-endian -I /home/ubuntu/.opam/default/lib/ocplib-endian/bigstring -I /home/ubuntu/.opam/default/lib/parser_plaf -I /home/ubuntu/.opam/default/lib/react -I /home/ubuntu/.opam/default/lib/result -I /home/ubuntu/.opam/default/lib/trie -I /home/ubuntu/.opam/default/lib/uchar -I /home/ubuntu/.opam/default/lib/utop -I /home/ubuntu/.opam/default/lib/uucp -I /home/ubuntu/.opam/default/lib/uuseg -I /home/ubuntu/.opam/default/lib/uutf -I /home/ubuntu/.opam/default/lib/xdg -I /home/ubuntu/.opam/default/lib/zed -I /usr/lib/ocaml/compiler-libs -I /usr/lib/ocaml/threads -I lib/.checked.objs/byte -no-alias-deps -o lib/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -c -impl lib/.utop/utop.ml-gen)
+$ (cd _build/default && /usr/bin/ocamlc.opt -w @1..3@5..28@30..39@43@46..47@49..57@61..62-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -24 -g -o lib/.utop/utop.bc /usr/lib/ocaml/compiler-libs/ocamlcommon.cma /usr/lib/ocaml/compiler-libs/ocamlbytecomp.cma /usr/lib/ocaml/compiler-libs/ocamltoplevel.cma /home/ubuntu/.opam/default/lib/findlib/findlib.cma /home/ubuntu/.opam/default/lib/findlib/findlib_top.cma /home/ubuntu/.opam/default/lib/logs/logs.cma /home/ubuntu/.opam/default/lib/lwt/lwt.cma /home/ubuntu/.opam/default/lib/logs/lwt/logs_lwt.cma /usr/lib/ocaml/unix.cma /usr/lib/ocaml/bigarray.cma /home/ubuntu/.opam/default/lib/ocplib-endian/ocplib_endian.cma /home/ubuntu/.opam/default/lib/ocplib-endian/bigstring/ocplib_endian_bigstring.cma /usr/lib/ocaml/threads/threads.cma /home/ubuntu/.opam/default/lib/lwt/unix/lwt_unix.cma -I /home/ubuntu/.opam/default/lib/lwt/../stublibs /home/ubuntu/.opam/default/lib/react/react.cma /home/ubuntu/.opam/default/lib/lwt_react/lwt_react.cma /home/ubuntu/.opam/default/lib/result/result.cma /home/ubuntu/.opam/default/lib/uutf/uutf.cma /home/ubuntu/.opam/default/lib/uucp/uucp.cma /home/ubuntu/.opam/default/lib/uuseg/uuseg.cma /home/ubuntu/.opam/default/lib/zed/zed.cma /home/ubuntu/.opam/default/lib/trie/trie.cma /home/ubuntu/.opam/default/lib/mew/mew.cma /home/ubuntu/.opam/default/lib/mew_vi/mew_vi.cma /home/ubuntu/.opam/default/lib/lambda-term/lambda_term.cma -I /home/ubuntu/.opam/default/lib/lambda-term/../stublibs /home/ubuntu/.opam/default/lib/xdg/xdg.cma -I /home/ubuntu/.opam/default/lib/xdg/../stublibs /home/ubuntu/.opam/default/lib/utop/uTop.cma /home/ubuntu/.opam/default/lib/menhirLib/menhirLib.cma /home/ubuntu/.opam/default/lib/parser_plaf/parser_plaf.cma lib/checked.cma lib/.utop/.utop.eobjs/byte/dune__exe__Utop.cmo -linkall -warn-error -31)
